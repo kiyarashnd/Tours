@@ -1,4 +1,6 @@
-export default [
+import img from './mee.jpg'
+// export default [
+export const people2 = [
   {
     id: 1,
     name: 'Bertie Yates',
@@ -34,4 +36,10 @@ export default [
     image:
       'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg',
   },
+  {
+    id: 6,
+    name: 'kiyarash',
+    age: 23,
+    image: img,
+  }
 ];
