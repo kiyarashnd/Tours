@@ -8,10 +8,24 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [tours, setTours] = useState([]);
 
+  const [newTours2, setNewTours] = useState([]);
+
   const removeTours = (id) => {
     const newTours = tours.filter((tour) => tour.id !== id);
     setTours(newTours);
   }
+
+  const addTours = (newTour) => {
+    const res = newTours2.find((item) =>
+      item.id === newTour.id
+    )
+    console.log("res", res);
+    if (res === undefined) {
+      setNewTours([newTour, ...newTours2]);
+    }
+  }
+  // console.log('1111', newTours2)
+
 
   const fetchTours = async () => {
     setLoading(true);
@@ -50,9 +64,20 @@ function App() {
     )
   }
   return (
-    <main>
-      <Tours tours={tours} removeTours={removeTours} />
-    </main>
+    <div>
+      <main>
+        <Tours tours={tours} removeTours={removeTours} addTours={addTours} />
+      </main>
+      <footer className='main-footer'>
+        {newTours2.map((tour) => {
+          return (
+            <p key={tour.id}>
+              {tour.name}
+            </p>
+          )
+        })}
+      </footer>
+    </div>
   )
 }
 
