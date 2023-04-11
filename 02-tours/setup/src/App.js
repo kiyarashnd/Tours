@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import Loading from './Loading'
 import Tours from './Tours'
-// ATTENTION!!!!!!!!!!
-// I SWITCHED TO PERMANENT DOMAIN
+
 const url = 'https://course-api.com/react-tours-project'
 function App() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  //this function run in initial ender
+  useEffect(() => {
+    fetchTours();
+    function handleMove(e) {
+      setPosition({ x: e.pageX, y: e.pageY });
+    }
+    window.addEventListener('pointermove', handleMove);
+    return () => {
+      window.removeEventListener('pointermove', handleMove);
+    };
+  }, []);
+
   const [loading, setLoading] = useState(false)
   const [tours, setTours] = useState([]);
 
@@ -19,13 +32,10 @@ function App() {
     const res = newTours2.find((item) =>
       item.id === newTour.id
     )
-    console.log("res", res);
     if (res === undefined) {
-      setNewTours([newTour, ...newTours2]);
+      setNewTours([...newTours2, newTour]);
     }
   }
-  // console.log('1111', newTours2)
-
 
   const fetchTours = async () => {
     setLoading(true);
@@ -39,9 +49,6 @@ function App() {
       console.log(error)
     }
   };
-  useEffect(() => {
-    fetchTours();
-  }, [])
 
   if (loading) {
     return (
@@ -65,15 +72,30 @@ function App() {
   }
   return (
     <div>
+      <div style={{
+        position: 'absolute',
+        backgroundColor: 'pink',
+        borderRadius: '50%',
+        opacity: 0.6,
+        transform: `translate(${position.x}px, ${position.y}px)`,
+        pointerEvents: 'none',
+        left: -20,
+        top: -20,
+        width: 40,
+        height: 40,
+      }} />
+
       <main>
         <Tours tours={tours} removeTours={removeTours} addTours={addTours} />
       </main>
       <footer className='main-footer'>
         {newTours2.map((tour) => {
           return (
-            <p key={tour.id}>
-              {tour.name}
-            </p>
+            <div key={tour.id}>
+              <p className='para'>
+                {tour.name} and total price is {tour.price}
+              </p>
+            </div>
           )
         })}
       </footer>

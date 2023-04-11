@@ -293,3 +293,7 @@ main {
 
   display: flex;
 }
+
+.para {
+  border: 1px solid black;
+}
