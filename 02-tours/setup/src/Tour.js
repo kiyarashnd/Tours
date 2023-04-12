@@ -10,6 +10,7 @@ const Tour = ({ addTours, removeTours, tour }) => {
         <h4 className='tour-price'>${tour.price}</h4>
       </div>
       <p>
+        {/* if readMore is true then render tour.info else render `${}` */}
         {readMore ? tour.info : `${tour.info.substring(0, tour.info.length / 2)}...`}
         <button onClick={() => setReadMore(!readMore)}>
           {readMore ? 'show less' : 'read more'}
