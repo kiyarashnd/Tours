@@ -286,19 +286,32 @@ main {
 
   background-color: white;
   width: 100%;
-  /* min-height: 100px; */
-
   display: flex;
   flex-direction: column;
+
 }
 
 .para {
   border: 1px solid black;
+  margin-bottom: 5px;
+
 }
 
 .myLink {
   position: fixed;
-  top: 20px;
-  color: red;
-  background-color: blue;
+  top: 0;
+  color: var(--clr-grey-1);
+  background-color: var(--clr-primary-5);
+  left: 0;
+
+  padding: 10px;
+  display: flex;
+}
+
+.myLink svg {
+  width: 30px;
+  height: 30px;
+
+  margin-left: 5px;
+  transform: translateY(-2px);
 }
