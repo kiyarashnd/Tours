@@ -6,7 +6,6 @@ import Cart from './Cart'
 
 const url = 'https://course-api.com/react-tours-project'
 function App() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [loading, setLoading] = useState(false)
   const [tours, setTours] = useState([]);
 
@@ -15,13 +14,6 @@ function App() {
   //this function run in initial ender
   useEffect(() => {
     fetchTours();
-    function handleMove(e) {
-      setPosition({ x: e.pageX, y: e.pageY });
-    }
-    window.addEventListener('pointermove', handleMove);
-    return () => {
-      window.removeEventListener('pointermove', handleMove);
-    };
   }, []);
 
   const removeTours = (id) => {
@@ -77,41 +69,15 @@ function App() {
       <Route exact path="/">
         <main>
           <Tours tours={tours} removeTours={removeTours} addTours={addTours} />
-          <footer className='main-footer'>
-            <Link to="/Cart">You have {newTours2.length} in Cart</Link>
-
-            {newTours2.map((tour) => {
-              return (
-                <div key={tour.id}>
-                  <p className='para'>
-                    {tour.name} and total price is {tour.price}
-                  </p>
-                </div>
-              )
-            })}
-          </footer>
+          <Link to="/Cart" className='myLink'>You have {newTours2.length} in Cart</Link>
         </main>
       </Route>
 
       <Switch>
         <Route path="/Cart">
-          <Cart></Cart>
+          <Cart newTours2={newTours2}></Cart>
         </Route>
       </Switch>
-      <div>
-        <div style={{
-          position: 'absolute',
-          backgroundColor: 'pink',
-          borderRadius: '50%',
-          opacity: 0.6,
-          transform: `translate(${position.x}px, ${position.y}px)`,
-          pointerEvents: 'none',
-          left: -20,
-          top: -20,
-          width: 40,
-          height: 40,
-        }} />
-      </div >
     </Router>
 
   )

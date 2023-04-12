@@ -282,18 +282,23 @@ main {
 }
 
 .main-footer {
-  position: fixed;
-  bottom: 0px;
-
   text-align: center;
 
   background-color: white;
   width: 100%;
-  min-height: 100px;
+  /* min-height: 100px; */
 
   display: flex;
+  flex-direction: column;
 }
 
 .para {
   border: 1px solid black;
+}
+
+.myLink {
+  position: fixed;
+  top: 20px;
+  color: red;
+  background-color: blue;
 }

@@ -1,8 +1,25 @@
-const Cart = () => {
+import { Link } from 'react-router-dom'
+
+const Cart = ({ newTours2 }) => {
+    let sum = 0;
+    const persian = Intl.NumberFormat("fa")
+    console.log(persian.format(2312));
     return (
-        <div>
-            <h1>Cart component</h1>
-        </div>
+        <footer className='main-footer'>
+            {newTours2.map((tour) => {
+                let price = Number(tour.price.replaceAll(',', ""))
+                sum += price;
+                return (
+                    <div key={tour.id}>
+                        <p className='para'>
+                            {tour.name}
+                        </p>
+                    </div>
+                )
+            })}
+            <p>total price is {Intl.NumberFormat().format(sum)}</p>
+            <Link to="/">Back to home</Link>
+        </footer>
     );
 }
 
