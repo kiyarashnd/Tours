@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import Loading from './Loading'
 import Tours from './Tours'
+import Cart from './Cart'
 
 const url = 'https://course-api.com/react-tours-project'
 function App() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [loading, setLoading] = useState(false)
+  const [tours, setTours] = useState([]);
+
+  const [newTours2, setNewTours2] = useState([]);
 
   //this function run in initial ender
   useEffect(() => {
@@ -18,22 +24,18 @@ function App() {
     };
   }, []);
 
-  const [loading, setLoading] = useState(false)
-  const [tours, setTours] = useState([]);
-
-  const [newTours2, setNewTours] = useState([]);
-
   const removeTours = (id) => {
     const newTours = tours.filter((tour) => tour.id !== id);
     setTours(newTours);
   }
 
   const addTours = (newTour) => {
+    //newTours2 here is previous tour that added
     const res = newTours2.find((item) =>
       item.id === newTour.id
     )
     if (res === undefined) {
-      setNewTours([...newTours2, newTour]);
+      setNewTours2([...newTours2, newTour]);
     }
   }
 
@@ -71,35 +73,47 @@ function App() {
     )
   }
   return (
-    <div>
-      <div style={{
-        position: 'absolute',
-        backgroundColor: 'pink',
-        borderRadius: '50%',
-        opacity: 0.6,
-        transform: `translate(${position.x}px, ${position.y}px)`,
-        pointerEvents: 'none',
-        left: -20,
-        top: -20,
-        width: 40,
-        height: 40,
-      }} />
+    <Router>
+      <Route exact path="/">
+        <main>
+          <Tours tours={tours} removeTours={removeTours} addTours={addTours} />
+          <footer className='main-footer'>
+            <Link to="/Cart">You have {newTours2.length} in Cart</Link>
 
-      <main>
-        <Tours tours={tours} removeTours={removeTours} addTours={addTours} />
-      </main>
-      <footer className='main-footer'>
-        {newTours2.map((tour) => {
-          return (
-            <div key={tour.id}>
-              <p className='para'>
-                {tour.name} and total price is {tour.price}
-              </p>
-            </div>
-          )
-        })}
-      </footer>
-    </div>
+            {newTours2.map((tour) => {
+              return (
+                <div key={tour.id}>
+                  <p className='para'>
+                    {tour.name} and total price is {tour.price}
+                  </p>
+                </div>
+              )
+            })}
+          </footer>
+        </main>
+      </Route>
+
+      <Switch>
+        <Route path="/Cart">
+          <Cart></Cart>
+        </Route>
+      </Switch>
+      <div>
+        <div style={{
+          position: 'absolute',
+          backgroundColor: 'pink',
+          borderRadius: '50%',
+          opacity: 0.6,
+          transform: `translate(${position.x}px, ${position.y}px)`,
+          pointerEvents: 'none',
+          left: -20,
+          top: -20,
+          width: 40,
+          height: 40,
+        }} />
+      </div >
+    </Router>
+
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import Tour from './Tour';
 const Tours = (props) => {
   const tours = props.tours;
@@ -10,7 +10,6 @@ const Tours = (props) => {
     </div>
     <div>
       {tours.map((tour) => {
-        console.log(tour)
         return <Tour key={tour.id} tour={tour} removeTours={props.removeTours} addTours={props.addTours} />
       })}
     </div>
