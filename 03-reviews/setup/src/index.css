@@ -164,7 +164,7 @@ main {
 
 .title {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 
 .underline {
@@ -268,6 +268,7 @@ main {
 }
 
 .random-btn {
+  font-size: 1rem;
   margin-top: 0.5rem;
   background: var(--clr-primary-10);
   color: var(--clr-primary-5);
