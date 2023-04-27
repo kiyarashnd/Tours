@@ -6,7 +6,7 @@ function App() {
   const [questions, setQuestions] = useState(data);
   return <main>
     <div className="container">
-      <h3>questions and answers and about login</h3>
+      <h3>questions and answers</h3>
       <section className="info">
         {
           questions.map((question) => {
