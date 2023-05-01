@@ -153,14 +153,8 @@ p {
   }
 }
 
-/*
-=============== 
-Menu
-===============
-*/
-
 .menu {
-  padding: 5rem 0;
+  padding: 2rem 0;
 }
 
 .title {
@@ -197,6 +191,11 @@ Menu
 }
 
 .filter-btn:hover {
+  background: var(--clr-gold);
+  color: var(--clr-white);
+}
+
+.active{
   background: var(--clr-gold);
   color: var(--clr-white);
 }
