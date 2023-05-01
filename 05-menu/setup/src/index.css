@@ -46,6 +46,7 @@ Variables
   --max-width: 1170px;
   --fixed-width: 620px;
 }
+
 /*
 =============== 
 Global Styles
@@ -59,6 +60,7 @@ Global Styles
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -67,12 +69,15 @@ body {
   line-height: 1.5;
   font-size: 0.875rem;
 }
+
 ul {
   list-style-type: none;
 }
+
 a {
   text-decoration: none;
 }
+
 h1,
 h2,
 h3,
@@ -82,38 +87,49 @@ h4 {
   line-height: 1.25;
   margin-bottom: 0.75rem;
 }
+
 h1 {
   font-size: 3rem;
 }
+
 h2 {
   font-size: 2rem;
 }
+
 h3 {
   font-size: 1.25rem;
 }
+
 h4 {
   font-size: 0.875rem;
 }
+
 p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
 }
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
   }
+
   h2 {
     font-size: 2.5rem;
   }
+
   h3 {
     font-size: 1.75rem;
   }
+
   h4 {
     font-size: 1rem;
   }
+
   body {
     font-size: 1rem;
   }
+
   h1,
   h2,
   h3,
@@ -121,6 +137,7 @@ p {
     line-height: 1;
   }
 }
+
 /*  global classes */
 
 /* section */
@@ -145,10 +162,12 @@ Menu
 .menu {
   padding: 5rem 0;
 }
+
 .title {
   text-align: center;
   margin-bottom: 2rem;
 }
+
 .underline {
   width: 5rem;
   height: 0.25rem;
@@ -156,11 +175,13 @@ Menu
   margin-left: auto;
   margin-right: auto;
 }
+
 .btn-container {
   margin-bottom: 4rem;
   display: flex;
   justify-content: center;
 }
+
 .filter-btn {
   background: transparent;
   border-color: transparent;
@@ -174,10 +195,12 @@ Menu
   transition: var(--transition);
   border-radius: var(--radius);
 }
+
 .filter-btn:hover {
   background: var(--clr-gold);
   color: var(--clr-white);
 }
+
 .section-center {
   width: 90vw;
   margin: 0 auto;
@@ -186,11 +209,13 @@ Menu
   gap: 3rem 2rem;
   justify-items: center;
 }
+
 .menu-item {
   display: grid;
   gap: 1rem 2rem;
   max-width: 25rem;
 }
+
 .photo {
   object-fit: cover;
   height: 200px;
@@ -199,17 +224,21 @@ Menu
   border-radius: var(--radius);
   display: block;
 }
+
 .item-info header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 0.5px dotted var(--clr-grey-5);
+  border-bottom: 0.5px solid var(--clr-gold);
 }
+
 .item-info h4 {
   margin-bottom: 0.5rem;
 }
+
 .price {
   color: var(--clr-gold);
 }
+
 .item-text {
   margin-bottom: 0;
   padding-top: 1rem;
@@ -221,15 +250,18 @@ Menu
     gap: 0 1.25rem;
     max-width: 40rem;
   }
+
   .photo {
     height: 175px;
   }
 }
+
 @media screen and (min-width: 1200px) {
   .section-center {
     width: 95vw;
     grid-template-columns: 1fr 1fr;
   }
+
   .photo {
     height: 150px;
   }
