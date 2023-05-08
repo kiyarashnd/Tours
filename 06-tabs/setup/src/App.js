@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
-import Header from "./Header";
 const url = "https://course-api.com/react-tabs-project";
 
 function App() {
@@ -32,7 +31,6 @@ function App() {
 
   return (
     <section className="section">
-      <Header />
       <div className="title">
         <h2>expierence</h2>
         <div className="underline"></div>
