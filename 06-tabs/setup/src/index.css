@@ -95,6 +95,10 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
 }
+.para{
+  font-size: 1.5rem;
+}
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
@@ -145,16 +149,18 @@ p {
   margin-left: auto;
   margin-right: auto;
 }
+
+.underlineHeader {
+  width: 10rem;
+  height: 0.25rem;
+  margin-bottom: 1.25rem;
+  background: var(--clr-primary-5);
+}
+
 .title {
   margin-bottom: 4rem;
   text-align: center;
 }
-
-/*
-=============== 
-Jobs
-===============
-*/
 
 .jobs-center {
   width: 80vw;
@@ -262,4 +268,18 @@ Jobs
 .btn:hover {
   color: var(--clr-primary-1);
   background: var(--clr-primary-8);
+}
+.contact{
+  display: flex;
+  gap: 10px;
+}
+
+.linkedin,.github{
+  width: 50px;
+  height: 50px;
+  color :hsl(209, 61%, 16%);
+}
+
+.aboutMe{
+  margin-top: 30px;
 }

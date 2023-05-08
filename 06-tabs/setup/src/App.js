@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
-// ATTENTION!!!!!!!!!!
-// I SWITCHED TO PERMANENT DOMAIN
+import Header from "./Header";
 const url = "https://course-api.com/react-tabs-project";
+
 function App() {
   const [loading, setLoading] = useState(true);
   const [jobs, setJobs] = useState([]);
@@ -27,19 +27,17 @@ function App() {
       </section>
     );
   }
-  console.log(jobs);
-  console.log(jobs[value]);
   // this place of destructuring is important :
   const { company, dates, duties, title } = jobs[value];
 
   return (
     <section className="section">
+      <Header />
       <div className="title">
         <h2>expierence</h2>
         <div className="underline"></div>
       </div>
       <div className="jobs-center">
-        {/* btn container */}
         <div className="btn-container">
           {jobs.map((item, index) => {
             return (
