@@ -180,6 +180,7 @@ input {
   }
 }
 input.error {
+  background-color: rgb(206, 86, 86);
   border: 2px solid var(--clr-red-dark);
 }
 .colors {
