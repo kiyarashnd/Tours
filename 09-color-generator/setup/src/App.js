@@ -11,9 +11,9 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      //new Values.all generate 20 colors
+      //new Values.all generate List of 20 colors
       let colors = new Values(color).all(10);
-      // console.log(colors);
+      //here color is value of input
       setList(colors);
       setError(false);
     } catch (error) {
@@ -30,8 +30,11 @@ function App() {
           <input
             type="text"
             value={color}
-            onChange={(e) => setColor(e.target.value)}
-            placeholder="#f15025"
+            onChange={(e) => {
+              console.log(e.target.value);
+              setColor(e.target.value);
+            }}
+            placeholder="#f15025 of rgb(255,0,0)"
             className={`${error ? "error" : null}`}
           />
           <button className="btn" type="submit">
@@ -39,16 +42,16 @@ function App() {
           </button>
         </form>
       </section>
+
       <section className="colors">
-        {list.map((color, index) => {
-          // console.log(color);
-          const hex = color.hex;
+        {list.map((anyColor, index) => {
+          // console.log(anyColor);//object of every color
           return (
             <SingleColor
               key={index}
-              {...color}
+              {...anyColor}
               index={index}
-              hexColor={color.hex}
+              hexColor={anyColor.hex}
             />
           );
         })}
