@@ -1,31 +1,35 @@
-import React, { useState, useEffect } from "react";
-import List from "./List";
-import Alert from "./Alert";
+import React, { useState, useEffect } from 'react';
+import List from './List';
+import Alert from './Alert';
 
 const getLocalStorage = () => {
-  let list = localStorage.getItem("list");
+  let list = localStorage.getItem('list');
   if (list) {
-    return JSON.parse(localStorage.getItem("list"));
+    return JSON.parse(localStorage.getItem('list'));
   } else {
     return [];
   }
 };
 
 function App() {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [list, setList] = useState(getLocalStorage);
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({
     show: false,
-    msg: "",
-    type: "",
+    msg: '',
+    type: '',
   });
+
+  const [isValid, setIsValid] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //name is value of input :
     if (!name) {
-      showAlert(true, "danger", "please enter value");
+      showAlert(true, 'danger', 'please enter value');
+      setIsValid(true);
     } else if (name && isEditing) {
       setList(
         list.map((item) => {
@@ -35,28 +39,28 @@ function App() {
           return item;
         })
       );
-      setName("");
+      setName(''); //make input empty after submit edit
       setEditID(null);
       setIsEditing(false);
-      showAlert(true, "success", "value changed");
+      showAlert(true, 'success', 'value changed');
     } else {
-      showAlert(true, "success", "item added to the list");
+      showAlert(true, 'success', 'item added to the list');
       const newItem = { id: new Date().getTime().toString(), title: name };
       setList([...list, newItem]);
-      setName("");
+      setName('');
     }
   };
 
-  const showAlert = (show = false, type = "", msg = "") => {
+  const showAlert = (show = false, type = '', msg = '') => {
     setAlert({ show, type, msg });
   };
 
   const clearList = () => {
-    showAlert(true, "danger", "empty list");
+    showAlert(true, 'danger', 'empty list');
     setList([]);
   };
   const removeItem = (id) => {
-    showAlert(true, "danger", "item remove");
+    showAlert(true, 'danger', 'item remove');
     setList(list.filter((item) => item.id !== id));
   };
 
@@ -66,32 +70,39 @@ function App() {
     setEditID(id);
     //set value of input :
     setName(specificItem.title);
+    document.querySelector('.grocery').focus();
   };
+
   useEffect(() => {
-    localStorage.setItem("list", JSON.stringify(list));
+    localStorage.setItem('list', JSON.stringify(list));
   }, [list]);
+
   return (
-    <section className="section-center">
-      <form className="grocery-form" onSubmit={handleSubmit}>
+    <section className='section-center'>
+      <form className='grocery-form' onSubmit={handleSubmit}>
         {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
         <h3>grocery bud</h3>
-        <div className="form-control">
+        <div className='form-control'>
           <input
-            type="text"
-            className="grocery"
-            placeholder="e.g. eggs"
+            type='text'
+            className={`grocery ${isValid ? 'valid' : ''}`}
+            placeholder='e.g. eggs'
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setIsValid(false);
+              return setName(e.target.value);
+            }}
           />
-          <button type="submit" className="submit-btn">
-            {isEditing ? "eidt" : "submit"}
+          <button type='submit' className='submit-btn'>
+            {isEditing ? 'eidt' : 'submit'}
           </button>
         </div>
       </form>
+
       {list.length > 0 && (
-        <div className="grocery-container">
+        <div className='grocery-container'>
           <List items={list} removeItem={removeItem} editItem={editItem} />
-          <button className="clear-btn" onClick={clearList}>
+          <button className='clear-btn' onClick={clearList}>
             clear items
           </button>
         </div>

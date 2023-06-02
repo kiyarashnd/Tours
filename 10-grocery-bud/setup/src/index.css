@@ -304,3 +304,7 @@ Grocery List
 .clear-btn:hover {
   color: var(--clr-red-dark);
 }
+
+.valid{
+  background-color: var(--clr-red-light);
+}
