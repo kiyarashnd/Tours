@@ -8,6 +8,18 @@ const Navbar = () => {
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
 
+  let count = useRef(0); //this line is read just in initial render
+  console.log(count);
+
+  count.current = count.current + 1;
+  console.log('new count : ', count.current); //on every re render this gonna change
+
+  let countVariable = 0;
+  console.log(countVariable);
+
+  countVariable = countVariable + 1;
+  console.log('new count variable : ', countVariable); //in every re render this not change and is still 1
+
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
     console.log(linksHeight);
