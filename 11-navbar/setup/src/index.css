@@ -187,7 +187,7 @@ nav {
   transition: var(--transition);
 }
 .show-container {
-  height: 15rem;
+  height: 10rem;
 }
 @media screen and (min-width: 800px) {
   .nav-center {
