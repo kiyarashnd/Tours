@@ -1,12 +1,15 @@
 import React, { useState, useContext } from 'react';
+import { createContext } from 'react';
 
-const AppContext = React.createContext();
+const AppContext = createContext();
 
 //children is important in
 const AppProvider = ({ children }) => {
+  console.log('AppContext is : ', AppContext); //object
   const [isSiderbarOpen, setIsSidebarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  //for sidebar :
   const openSidebar = () => {
     setIsSidebarOpen(true);
   };
@@ -15,6 +18,7 @@ const AppProvider = ({ children }) => {
     setIsSidebarOpen(false);
   };
 
+  //for modal :
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -22,6 +26,8 @@ const AppProvider = ({ children }) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  let myData = 'kiya';
   //in value we can pass every thing we want (here object):
   return (
     <AppContext.Provider
@@ -32,6 +38,7 @@ const AppProvider = ({ children }) => {
         openSidebar,
         closeModal,
         closeSidebar,
+        myData,
       }}
     >
       {children}

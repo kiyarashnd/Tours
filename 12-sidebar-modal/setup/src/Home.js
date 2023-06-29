@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
 import { FaBars } from 'react-icons/fa';
-import { useGlobalContext } from './context';
+import { AppContext, useGlobalContext } from './context';
 
 const Home = () => {
+  //useContext returns the context "value" for the context you passed
+
   // const data = useContext(AppContext);
-  const { openSidebar, openModal } = useGlobalContext();
+  // const { openSidebar, openModal, myData } = useGlobalContext();
+  const { openSidebar, openModal } = useContext(AppContext);
 
   return (
     <main>

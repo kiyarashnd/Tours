@@ -315,7 +315,8 @@ Sidebar
   grid-template-rows: auto 1fr auto;
   row-gap: 1rem;
   box-shadow: var(--clr-red-dark);
-  transition: var(--transition);
+/* for show side bar with animation when user click open sidebarS */
+  transition:all 0.3s linear;
   transform: translate(-100%);
 }
 .show-sidebar {
