@@ -14,8 +14,14 @@ const Navbar = () => {
     const bottm = tempBtn.bottm - 3;
     openSubmenu(page, { center, bottm });
   };
+  const handleSubmenu = (e) => {
+    //if element that we hover on taht is not contain call of link-btn :
+    if (!e.target.classList.contains('link-btn')) {
+      closeSubmenu();
+    }
+  };
   return (
-    <nav className='nav'>
+    <nav className='nav' onMouseOver={handleSubmenu}>
       <div className='nav-center'>
         <div className='nav-header'>
           <img src={logo} alt='stripe' className='nav-logo' />
