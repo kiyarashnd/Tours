@@ -251,6 +251,7 @@ Stripe Styles
     text-transform: capitalize;
     letter-spacing: 1px;
     width: 10rem;
+    cursor: pointer;
   }
 }
 

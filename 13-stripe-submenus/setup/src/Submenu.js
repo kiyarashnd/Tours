@@ -25,6 +25,7 @@ const Submenu = () => {
       setColumns('col-4');
     }
   }, [location, links]);
+
   return (
     <aside
       className={`${isSubmenuOpen ? 'submenu show' : 'submenu'}`}
