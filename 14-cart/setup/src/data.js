@@ -3,7 +3,7 @@ export default [
     id: 1,
     title: 'Samsung Galaxy S7',
     price: 599.99,
-    img: 'https://dl.airtable.com/.attachments/91ee456448cef47deec553a2ea3fa8ad/b08bec68/phone-2_ohtt5s.png',
+    img: '../images/image1.jpg',
     amount: 1,
   },
   {
